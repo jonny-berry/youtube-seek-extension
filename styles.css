@@ -1,0 +1,20 @@
+.seek-ext-btn {
+  /* display: flex;
+  justify-self: end !important;
+  align-self: center; */
+  /* margin: 0 2% 0 auto; */
+  background-color: rgba(0, 0, 0, .3) !important;
+  /* height: 50% !important; */
+  padding: 5px 2px !important;
+  border-radius: 25px !important;
+}
+
+.seek-btns-container {
+  display: flex !important;
+  margin: 0 2% 0 auto;
+  align-self: center;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10%;
+  height: 50% !important;
+}
