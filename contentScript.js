@@ -18,6 +18,14 @@
 
     youtubeLeftControls.appendChild(rewindBtn);
     youtubeLeftControls.appendChild(fastForwardBtn);
+
+    rewindBtn.addEventListener("click", () => {
+      youtubePlayer.currentTime -= 10;
+    })
+
+    fastForwardBtn.addEventListener("click", () => {
+      youtubePlayer.currentTime += 10;
+    })
   }
 
   addSeekBtns();
