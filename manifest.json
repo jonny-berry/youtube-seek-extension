@@ -17,12 +17,18 @@
         "assets/rewind.svg",
         "assets/fast-forward.svg"
       ],
-      "matches": ["<all_urls>"]
+      "matches": ["https://www.youtube.com/*"]
     }
   ],
   "action": {
     "default_title": "YouTube Seek Buttons",
     "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "assets/icons/16px-icon.png",
+    "32": "assets/icons/32px-icon.png",
+    "48": "assets/icons/48px-icon.png",
+    "128": "assets/icons/128px-icon.png"
   },
   "manifest_version": 3
 }
