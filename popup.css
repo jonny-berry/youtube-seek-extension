@@ -1,3 +1,8 @@
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -8,4 +13,19 @@ body {
 
 .ext-logo {
   width: 80%;
+  margin-bottom: 9vh;
+}
+
+.jump-amount-slider {
+  margin: 0 0 9vh 0;
+}
+
+.dev-tag {
+  display: inline;
+  font-family: "Playfair";
+  font-style: italic;
+}
+
+.dev-tag:hover {
+  border: 1px dotted black;
 }

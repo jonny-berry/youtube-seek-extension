@@ -1,5 +1,5 @@
 {
-  "name": "YouTube Seek Buttons",
+  "name": "Seek Buttons for YouTube",
   "version": "0.1.0",
   "description": "Adds fast forward and rewind buttons to YouTube's video player",
   "permissions": ["storage"],
