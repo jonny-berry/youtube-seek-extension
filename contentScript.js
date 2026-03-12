@@ -37,8 +37,11 @@
     })
   }
 
-  addSeekBtns();
-  initSeekButtons();
+  // Wait for YouTube SPA navigation to finish before injecting buttons
+  document.addEventListener("yt-navigate-finish", () => {
+    addSeekBtns();
+    initSeekButtons();
+  });
 
   // Update seek button functionality when seek duration changes
   chrome.storage.onChanged.addListener((changes) => {

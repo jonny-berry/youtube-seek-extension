@@ -6,9 +6,10 @@
   "host_permissions": ["https://*.youtube.com/*"],
   "content_scripts": [
     {
-      "matches": ["https://*.youtube.com/watch*"],
+      "matches": ["https://*.youtube.com/*"],
       "js": ["contentScript.js"],
-      "css": ["ext-styles.css"]
+      "css": ["ext-styles.css"],
+      "run_at": "document_start"
     }
   ],
   "web_accessible_resources": [
