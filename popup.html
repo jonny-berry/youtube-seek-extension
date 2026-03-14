@@ -9,10 +9,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
+  <!-- Playfair font import -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
 <body>
   <div>
@@ -20,20 +20,38 @@
     <h1>Set Seek Button Jump Amount</h1>
     <p class="jump-amount-display">10 seconds</p>
     
-    <input class="jump-amount-slider" type="range" min="5" max="30" step="5" value="10" list="seek-values">
+    <input
+      class="jump-amount-slider"
+      type="range"
+      min="5"
+      max="30"
+      step="5"
+      value="10"
+      list="seek-values"
+    >
     <datalist id="seek-values">
-      <option value="5">5</option>
+      <option value="5"></option>
       <option value="10"></option>
       <option value="15"></option>
       <option value="20"></option>
       <option value="25"></option>
       <option value="30"></option>
     </datalist>
-    <a href="https://github.com/jonny-berry" target="_blank">
-      <p class="dev-tag">Support the dev :)</p>
-    </a>
+    <footer>
+      <a
+        class="chrome-store-link"
+        href="https://chromewebstore.google.com/detail/seek-buttons-for-youtube/echjglbmhomlekpgohmfgpamfohkfoip?authuser=0&hl=en"
+        target="_blank">
+        View on Chrome Web Store
+      </a>
+      <a
+        class="github-link"
+        href="https://github.com/jonny-berry/youtube-seek-extension"
+        target="_blank">
+        Github
+      </a>
+    </footer>
   </div>
-
   <script src="popup.js"></script>
 </body>
 </html>

@@ -7,25 +7,41 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2vh 3vh;
+  width: fit-content;
+  margin: 3vh 4vh;
   font-family: 'Roboto';
 }
 
 .ext-logo {
-  width: 80%;
+  align-self: flex-start;
+  width: 60%;
   margin-bottom: 9vh;
 }
 
 .jump-amount-slider {
   margin: 0 3vh 9vh 0;
+  cursor: pointer;
 }
 
-.dev-tag {
-  display: inline;
+.jump-amount-slider:active {
+  cursor: grab;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  font-family: 'Playfair';
+  font-weight: italic;
+  font-size: 0.6rem;
+}
+
+footer * {
   font-family: "Playfair";
   font-style: italic;
+  border: 1px dotted rgba(0, 0, 0, 0);
 }
 
-.dev-tag:hover {
+footer *:hover {
   border: 1px dotted black;
 }
