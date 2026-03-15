@@ -7,13 +7,13 @@
   const addSeekBtns = () => {
     const seekBtnsContainer = document.createElement("div");
 
-    seekBtnsContainer.className = "seek-btns-container";
+    seekBtnsContainer.className = "seek-btns-container " + "ytp-right-controls";
 
     rewindBtn.src = chrome.runtime.getURL("assets/rewind.svg");
-    rewindBtn.className = "ytp-button " + "rewind-btn " + "seek-ext-btn";
+    rewindBtn.className = "ytp-button " + "rewind-btn " + "seek-ext-btn " + "ytp-chrome-controls ";
 
     fastForwardBtn.src = chrome.runtime.getURL("assets/fast-forward.svg");
-    fastForwardBtn.className = "ytp-button " + "fast-forward-btn " + "seek-ext-btn";
+    fastForwardBtn.className = "ytp-button " + "fast-forward-btn " + "seek-ext-btn " + "ytp-chrome-controls";
 
     youtubeLeftControls = document.getElementsByClassName("ytp-left-controls")[0];
     youtubePlayer = document.getElementsByClassName("video-stream")[0];
