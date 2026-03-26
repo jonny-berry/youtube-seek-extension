@@ -1,4 +1,5 @@
 (() => {
+  console.log('hello')
   let youtubeLeftControls, youtubePlayer;
 
   const rewindBtn = document.createElement("img");
@@ -26,18 +27,30 @@
 
       const btnRect = eventTarget.getBoundingClientRect();
       const playerRect = youtubePlayer.getBoundingClientRect();
+      const theatreBtn = document.getElementsByClassName('ytp-size-button')[0];
+      let left, top;      
 
-      let left, top;
-
-      if (eventTarget === fastForwardBtn) {
-        left = (btnRect.left - playerRect.left + btnRect.width / 2) - (playerRect.height * 0.15);;
-        top = btnRect.top - playerRect.top - toolTipContainer.offsetHeight - (playerRect.height * 0.091);
+      // Set left value for theater mode
+      if (theatreBtn.getAttribute('data-title-no-tooltip') === 'Default view') {
+        if (eventTarget === fastForwardBtn) {
+          left = (btnRect.left - playerRect.left + btnRect.width / 2) - (playerRect.height * -0.27);;
+        }
+        else if (eventTarget === rewindBtn) {
+          left = (btnRect.left - playerRect.left + btnRect.width / 2) - (playerRect.height * -0.3);;
+        }
       }
 
-      else if (eventTarget === rewindBtn) {
-        left = (btnRect.left - playerRect.left + btnRect.width / 2) - (playerRect.height * 0.10);;
-        top = btnRect.top - playerRect.top - toolTipContainer.offsetHeight - (playerRect.height * 0.091);
+      // Set left value for default view
+      else {
+        if (eventTarget === fastForwardBtn) {
+          left = (btnRect.left - playerRect.left + btnRect.width / 2) - (playerRect.height * 0.15);;
+        }
+        else if (eventTarget === rewindBtn) {
+          left = (btnRect.left - playerRect.left + btnRect.width / 2) - (playerRect.height * 0.10);;
+        }
       }
+
+      top = btnRect.top - playerRect.top - toolTipContainer.offsetHeight - (playerRect.height * 0.091);
 
       toolTipContainer.style.left = `${left}px`;
       toolTipContainer.style.top = `${top}px`;
@@ -68,7 +81,9 @@
       const videoPlayer = document.getElementsByClassName("html5-video-player")[0];
       const toolTipContainer = document.getElementsByClassName("seek-ext-tooltip")[0];
 
-      videoPlayer.removeChild(toolTipContainer)
+      
+
+      videoPlayer.removeChild(toolTipContainer);
     }
 
 
