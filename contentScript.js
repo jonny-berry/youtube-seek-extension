@@ -24,7 +24,7 @@
       const toolTipContainer = document.createElement("div");
       toolTipContainer.className = "ytp-tooltip " + "ytp-bottom " + "seek-ext-tooltip";
 
-      const btnRect = fastForwardBtn.getBoundingClientRect();
+      const btnRect = eventTarget.getBoundingClientRect();
       const playerRect = youtubePlayer.getBoundingClientRect();
 
       let left, top;
@@ -35,7 +35,7 @@
       }
 
       else if (eventTarget === rewindBtn) {
-        left = (btnRect.left - playerRect.left + btnRect.width / 2) - (playerRect.height * 0.19);;
+        left = (btnRect.left - playerRect.left + btnRect.width / 2) - (playerRect.height * 0.10);;
         top = btnRect.top - playerRect.top - toolTipContainer.offsetHeight - (playerRect.height * 0.091);
       }
 
@@ -50,7 +50,8 @@
 
       const text = document.createElement('span');
       text.className = "ytp-tooltip-text";
-      text.textContent = eventTarget.title;
+      
+      text.textContent = eventTarget.ariaLabel;
 
       const videoPlayer = document.getElementsByClassName("html5-video-player")[0];
 
@@ -72,8 +73,8 @@
 
 
 
-    fastForwardBtn.addEventListener('mouseenter', () => { addToolTip(event.currentTarget);  })
-    rewindBtn.addEventListener('mouseenter', () => { addToolTip(event.currentTarget);  })
+    fastForwardBtn.addEventListener('mouseenter', () => { addToolTip(fastForwardBtn);  })
+    rewindBtn.addEventListener('mouseenter', () => { addToolTip(rewindBtn);  })
 
     fastForwardBtn.addEventListener('mouseleave', () => { removeToolTip();  })
     rewindBtn.addEventListener('mouseleave', () => { removeToolTip();  })
@@ -87,9 +88,8 @@
     chrome.storage.sync.get("seekDuration", (result) => {
       let seekDuration = parseInt(result.seekDuration) || 10;
 
-      rewindBtn.title = `Rewind ${seekDuration} seconds`;
-
-      fastForwardBtn.title = `Fast forward ${seekDuration} seconds`;
+      fastForwardBtn.setAttribute('aria-label', `Fast forward ${seekDuration} seconds`);
+      rewindBtn.setAttribute('aria-label', `Rewind ${seekDuration} seconds`);
 
       rewindBtn.onclick = () => { youtubePlayer.currentTime -= seekDuration; };
 

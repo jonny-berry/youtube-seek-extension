@@ -23,8 +23,15 @@
   transition: background-color .1s cubic-bezier(0.05, 0, 0, 1) !important;
 }
 
-/* .seek-ext-tooltip {
-  max-width: 300px;
-  top: 85%;
-  left: 67%;
-} */
+.seek-ext-tooltip {
+  animation: tooltip-intro 0.25s ease;
+}
+
+@keyframes tooltip-intro {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
