@@ -1,5 +1,4 @@
 (() => {
-  console.log('hello')
   let youtubeLeftControls, youtubePlayer;
 
   const rewindBtn = document.createElement("img");
@@ -19,7 +18,20 @@
     youtubeLeftControls = document.getElementsByClassName("ytp-left-controls")[0];
     youtubePlayer = document.getElementsByClassName("video-stream")[0];
 
+    youtubeLeftControls = document.getElementsByClassName("ytp-left-controls")[0];
+    youtubePlayer = document.getElementsByClassName("video-stream")[0];
 
+
+    const theatreBtn = document.getElementsByClassName('ytp-size-button')[0];
+    const observer = new MutationObserver(() => {
+      if (document.getElementsByClassName("seek-ext-tooltip")[0]) {
+        removeToolTip();
+      }
+    });
+    observer.observe(theatreBtn, {
+      attributes: true,
+      attributeFilter: ['data-title-no-tooltip']
+    });
 
     function addToolTip(eventTarget) {
       const theatreBtn = document.getElementsByClassName('ytp-size-button')[0];
