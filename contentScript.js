@@ -22,38 +22,21 @@
 
 
     function addToolTip(eventTarget) {
+      const theatreBtn = document.getElementsByClassName('ytp-size-button')[0];
       const toolTipContainer = document.createElement("div");
-      toolTipContainer.className = "ytp-tooltip " + "ytp-bottom " + "seek-ext-tooltip";
+      toolTipContainer.className = "ytp-tooltip ytp-bottom seek-ext-tooltip";
 
       const btnRect = eventTarget.getBoundingClientRect();
-      const playerRect = youtubePlayer.getBoundingClientRect();
-      const theatreBtn = document.getElementsByClassName('ytp-size-button')[0];
-      let left, top;      
+      const playerRect = document.getElementsByClassName("html5-video-player")[0].getBoundingClientRect();
 
-      // Set left value for theater mode
-      if (theatreBtn.getAttribute('data-title-no-tooltip') === 'Default view') {
-        if (eventTarget === fastForwardBtn) {
-          left = (btnRect.left - playerRect.left + btnRect.width / 2) - (playerRect.height * -0.27);;
-        }
-        else if (eventTarget === rewindBtn) {
-          left = (btnRect.left - playerRect.left + btnRect.width / 2) - (playerRect.height * -0.3);;
-        }
-      }
+      const left = btnRect.left - playerRect.left + btnRect.width / 2;
 
-      // Set left value for default view
-      else {
-        if (eventTarget === fastForwardBtn) {
-          left = (btnRect.left - playerRect.left + btnRect.width / 2) - (playerRect.height * 0.15);;
-        }
-        else if (eventTarget === rewindBtn) {
-          left = (btnRect.left - playerRect.left + btnRect.width / 2) - (playerRect.height * 0.10);;
-        }
-      }
-
-      top = btnRect.top - playerRect.top - toolTipContainer.offsetHeight - (playerRect.height * 0.091);
+      const tooltipOffset = 50;
+      const top = btnRect.top - playerRect.top - tooltipOffset;
 
       toolTipContainer.style.left = `${left}px`;
       toolTipContainer.style.top = `${top}px`;
+      toolTipContainer.style.transform = "translateX(-50%)";
 
       const textWrapper = document.createElement('div');
       textWrapper.className = "ytp-tooltip-text-wrapper";
@@ -63,14 +46,11 @@
 
       const text = document.createElement('span');
       text.className = "ytp-tooltip-text";
-      
       text.textContent = eventTarget.ariaLabel;
 
       const videoPlayer = document.getElementsByClassName("html5-video-player")[0];
-
       videoPlayer.appendChild(toolTipContainer);
       toolTipContainer.appendChild(textWrapper);
-
       textWrapper.appendChild(bottomText);
       bottomText.appendChild(text);
     }
@@ -80,8 +60,6 @@
     function removeToolTip() {
       const videoPlayer = document.getElementsByClassName("html5-video-player")[0];
       const toolTipContainer = document.getElementsByClassName("seek-ext-tooltip")[0];
-
-      
 
       videoPlayer.removeChild(toolTipContainer);
     }
