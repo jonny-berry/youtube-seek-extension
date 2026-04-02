@@ -18,10 +18,7 @@
     youtubeLeftControls = document.getElementsByClassName("ytp-left-controls")[0];
     youtubePlayer = document.getElementsByClassName("video-stream")[0];
 
-    youtubeLeftControls = document.getElementsByClassName("ytp-left-controls")[0];
-    youtubePlayer = document.getElementsByClassName("video-stream")[0];
-
-
+    // Remove tooltips on viewing mode change
     const theatreBtn = document.getElementsByClassName('ytp-size-button')[0];
     const observer = new MutationObserver(() => {
       if (document.getElementsByClassName("seek-ext-tooltip")[0]) {
@@ -33,8 +30,15 @@
       attributeFilter: ['data-title-no-tooltip']
     });
 
+    // Remove tooltips when chrome bottom opacity 0
+    const chromeBottom = document.getElementsByClassName('ytp-chrome-bottom')[0];
+    setInterval(() => {
+      if (getComputedStyle(chromeBottom).opacity === '0' && document.getElementsByClassName("seek-ext-tooltip")[0]) {
+        removeToolTip();
+      }
+    }, 100);
+
     function addToolTip(eventTarget) {
-      const theatreBtn = document.getElementsByClassName('ytp-size-button')[0];
       const toolTipContainer = document.createElement("div");
       toolTipContainer.className = "ytp-tooltip ytp-bottom seek-ext-tooltip";
 
@@ -67,16 +71,13 @@
       bottomText.appendChild(text);
     }
 
-
-
     function removeToolTip() {
       const videoPlayer = document.getElementsByClassName("html5-video-player")[0];
       const toolTipContainer = document.getElementsByClassName("seek-ext-tooltip")[0];
-
-      videoPlayer.removeChild(toolTipContainer);
+      if (toolTipContainer) {
+        videoPlayer.removeChild(toolTipContainer);
+      }
     }
-
-
 
     fastForwardBtn.addEventListener('mouseenter', () => { addToolTip(fastForwardBtn);  })
     rewindBtn.addEventListener('mouseenter', () => { addToolTip(rewindBtn);  })
@@ -102,13 +103,11 @@
     })
   }
 
-  // Wait for YouTube SPA navigation to finish before injecting buttons
   document.addEventListener("yt-navigate-finish", () => {
     addSeekBtns();
     initSeekButtons();
   });
 
-  // Update seek button functionality when seek duration changes
   chrome.storage.onChanged.addListener((changes) => {
     if (changes.seekDuration) {
       initSeekButtons();
